@@ -2,11 +2,12 @@
 import { Input } from '../ui/input';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 function NavSearch() {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
+  const searchQuery = useMemo(() => searchParams.get('search') || '', [searchParams]);
   const [search, setSearch] = useState(searchParams.get('search')?.toString() || '');
   const handleSearch = useDebouncedCallback((value: string) => {
     const params = new URLSearchParams(searchParams);
@@ -19,10 +20,10 @@ function NavSearch() {
   }, 300);
 
   useEffect(() => {
-    if (!searchParams.get('search')) {
+    if (!searchQuery) {
       setSearch('');
     }
-  }, [searchParams.get('search')]);
+  }, [searchQuery]);
   return (
     <Input
       type='search'

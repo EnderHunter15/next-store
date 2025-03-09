@@ -3,7 +3,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { LuAlignLeft } from 'react-icons/lu';
 import Link from 'next/link';
@@ -21,7 +20,7 @@ function LinksDropdown() {
       <DropdownMenuContent className='w-40' align='start' sideOffset={10}>
         {links.map((link) => {
           return (
-            <DropdownMenuItem>
+            <DropdownMenuItem key={1}>
               <Link href={link.href} className='capitalize w-full'>
                 {link.label}
               </Link>

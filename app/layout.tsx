@@ -4,7 +4,8 @@ import './globals.css';
 import Navbar from '@/components/navbar/Navbar';
 import Container from '@/components/global/Container';
 import Providers from './providers';
-import { ClerkProvider } from '@clerk/nextjs';
+import { ClerkProvider, SignInButton, SignUpButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { Toaster } from 'sonner';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Providers>
             <Navbar />
             <Container className='py-20'>{children}</Container>
+            <Toaster />
           </Providers>
         </body>
       </html>

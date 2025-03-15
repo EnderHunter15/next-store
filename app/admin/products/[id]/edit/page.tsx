@@ -8,7 +8,7 @@ import CheckboxInput from '@/components/form/CheckboxInput';
 import ImageInputContainer from '@/components/form/ImageInputContainer';
 
 export default async function EditProductPage({ params }: { params: { id: string } }) {
-  const { id } = await params;
+  const { id } = params;
   const product = await fetchAdminProductDetails(id);
   const { name, company, description, featured, price } = product;
   return (

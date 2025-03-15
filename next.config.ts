@@ -15,4 +15,10 @@ const nextConfig: NextConfig = {
   },
 };
 
+module.exports = {
+  experimental: {
+    appDir: true,
+  },
+};
+
 export default nextConfig;

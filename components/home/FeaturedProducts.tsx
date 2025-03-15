@@ -1,11 +1,11 @@
 import { fetchFeaturedProducts } from '@/utils/actions';
-import EmtpyList from '../global/EmtpyList';
+import EmptyList from '../global/EmptyList';
 import SectionTitle from '../global/SectionTitle';
 import ProductsGrid from '../products/ProductsGrid';
 
 async function FeaturedProducts() {
   const products = await fetchFeaturedProducts();
-  if (products.length === 0) return <EmtpyList />;
+  if (products.length === 0) return <EmptyList />;
   return (
     <section className='pt-24'>
       <SectionTitle text='featured products' />

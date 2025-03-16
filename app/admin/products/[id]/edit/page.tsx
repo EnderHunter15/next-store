@@ -7,10 +7,13 @@ import { SubmitButton } from '@/components/form/Buttons';
 import CheckboxInput from '@/components/form/CheckboxInput';
 import ImageInputContainer from '@/components/form/ImageInputContainer';
 
-type PageProps = { params: { id: string } };
+// For Next.js App Router, we need to export a component that accepts params
+export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
+  // We need to await the params since it's a Promise
+  const resolvedParams = await params;
+  const { id } = resolvedParams;
 
-export default async function EditProductPage({ params }: PageProps) {
-  const product = await fetchAdminProductDetails(params.id);
+  const product = await fetchAdminProductDetails(id);
 
   return (
     <section>
@@ -22,12 +25,12 @@ export default async function EditProductPage({ params }: PageProps) {
           image={product.image}
           text='update image'
         >
-          <input type='hidden' name='id' value={params.id} />
+          <input type='hidden' name='id' value={id} />
           <input type='hidden' name='url' value={product.image} />
         </ImageInputContainer>
         <FormContainer action={updateProductAction}>
           <div className='grid gap-4 md:grid-cols-2 my-4'>
-            <input type='hidden' name='id' value={params.id} />
+            <input type='hidden' name='id' value={id} />
             <FormInput type='text' name='name' label='product name' defaultValue={product.name} />
             <FormInput type='text' name='company' defaultValue={product.company} />
             <PriceInput defaultValue={product.price} />

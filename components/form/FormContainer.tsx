@@ -10,11 +10,13 @@ const initialState = {
 };
 
 export default function FormContainer({ action, children }: { action: actionFunction; children: React.ReactNode }) {
-  const [state, formAction] = useActionState(action, initialState);
+  const [state = initialState, formAction] = useActionState(action, initialState);
+
   useEffect(() => {
-    if (state.message) {
+    if (state && state.message) {
       toast(`${state.message}`);
     }
   }, [state]);
+
   return <form action={formAction}>{children}</form>;
 }

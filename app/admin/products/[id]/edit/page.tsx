@@ -4,12 +4,11 @@ import FormInput from '@/components/form/FormInput';
 import PriceInput from '@/components/form/PriceInput';
 import TextAreaInput from '@/components/form/TextAreaInput';
 import { SubmitButton } from '@/components/form/Buttons';
+import ShareButton from '@/components/single-product/ShareButton';
 import CheckboxInput from '@/components/form/CheckboxInput';
 import ImageInputContainer from '@/components/form/ImageInputContainer';
 
-// For Next.js App Router, we need to export a component that accepts params
 export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
-  // We need to await the params since it's a Promise
   const resolvedParams = await params;
   const { id } = resolvedParams;
 

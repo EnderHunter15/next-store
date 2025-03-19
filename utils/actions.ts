@@ -306,10 +306,17 @@ export const deleteReviewAction = async (prevState: { reviewId: string }) => {
 
     revalidatePath('/reviews');
 
-    return { message: 'Review deleted successfully' }; // ✅ Ensure a valid return type
+    return { message: 'Review deleted successfully' };
   } catch (error) {
     console.error('Error deleting review:', error);
-    return { message: 'Failed to delete review' }; // ✅ Ensure a return value
+    return { message: 'Failed to delete review' };
   }
 };
-export const findExistingReview = async () => {};
+export const findExistingReview = async (userId: string, productId: string) => {
+  return db.review.findFirst({
+    where: {
+      clerkId: userId,
+      productId,
+    },
+  });
+};

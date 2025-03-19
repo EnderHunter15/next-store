@@ -5,7 +5,7 @@ import FormContainer from '@/components/form/FormContainer';
 import { IconButton } from '@/components/form/Buttons';
 
 export default function DeleteReview({ reviewId }: { reviewId: string }) {
-  async function handleDelete(prevState: any, formData: FormData) {
+  async function handleDelete() {
     return await deleteReviewAction({ reviewId });
   }
 

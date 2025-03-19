@@ -4266,10 +4266,7 @@ export default ThirdColumn;
 - actions.ts
 
 ```ts
-eexport const removeCartItemAction = async (
-  prevState: any,
-  formData: FormData
-) => {
+export const removeCartItemAction = async (prevState: any, formData: FormData) => {
   const user = await getAuthUser();
   try {
     const cartItemId = formData.get('id') as string;
